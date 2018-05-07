@@ -1,0 +1,30 @@
+<extend name="Public/base" />
+<!--开始：以下内容则可删除，仅为素材引用参考-->
+<!--点击加载-->
+<block name="body">
+    <form action="" method='post'>
+        <input type="hidden" name="role_id" value="{$data.role_id}" />
+        <section>
+        <h2><strong style="color:grey;">分配权限</strong></h2>
+        <ul class="ulColumn2">
+            <li>
+                <span class="item_name" style="width:120px;">已分配权限：</span>
+                    {volist name="data['in']" id="val"}
+                        <label class="single_selection"><input type="checkbox" value="{$val.a_id}" checked name="in[]"/>{$val.access_name}</label>
+                    {/volist}
+                
+            </li>
+            <li>
+                <span class="item_name" style="width:120px;">未分配权限：</span>
+                    {volist name="data['notin']" id="val"}
+                        <label class="single_selection"><input type="checkbox" value="{$val.a_id}" name="notin[]"/>{$val.access_name}</label>
+                    {/volist}
+            </li>
+            <li>
+                <span class="item_name" style="width:120px;"></span>
+                <input type="submit" class="link_btn"/>
+            </li>
+        </ul>
+    </section>
+    </form>
+</block>

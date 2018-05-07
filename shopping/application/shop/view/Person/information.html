@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<base href="/static/static/" />
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+
+		<title>个人资料</title>
+
+		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="../css/personal.css" rel="stylesheet" type="text/css">
+		<link href="../css/infstyle.css" rel="stylesheet" type="text/css">
+		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
+	</head>
+
+	<body>
+		{include file="common/top"}
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-info">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+						</div>
+						<hr/>
+						<form class="am-form am-form-horizontal" method="post" enctype="multipart/form-data">
+						<!--头像 -->
+						<div class="user-infoPic">
+
+							<div class="filePic">
+								<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+								<img class="am-circle am-img-thumbnail" src="{$user.headingimg}" alt="" />
+							</div>
+
+							<p class="am-form-help">头像</p>
+							
+							<input type="hidden" name="oldhead" value="{$user.headingimg }">
+
+
+							<div class="info-m">
+								<div><b>用户名：<i>{$Think.session.userinfo.email|default=$Think.session.userinfo.mobile}</i></b></div>
+								
+							</div>
+						</div>
+
+						<!--个人信息 -->
+						<div class="info-main">
+							
+							<div class="am-form-group">
+									<label for="user-name2" class="am-form-label">更换头像</label>
+									<div class="am-form-content">
+										<input type="file" name="newhead">
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label for="user-name2" class="am-form-label">昵称</label>
+									<div class="am-form-content">
+										<input type="text" id="user-name2" name="nickname" value="{$user.nickname}" placeholder="nickname">
+                                          <small>昵称长度不能超过40个汉字</small>
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label for="user-name" class="am-form-label">姓名</label>
+									<div class="am-form-content">
+										<input type="text" name="realy_name" id="user-name2" placeholder="name" value="{$user.realy_name}">
+                                         
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label class="am-form-label">性别</label>
+									<div class="am-form-content sex">
+										<label class="am-radio-inline">
+											<input name="sex" type="radio" <?php if($user->sex==1){echo "checked";} ?>  value="1" data-am-ucheck> 男
+										</label>
+										<label class="am-radio-inline">
+											<input name="sex" type="radio" <?php if($user->sex==0){echo "checked";} ?>  value="0" data-am-ucheck> 女
+										</label>
+										
+									</div>
+								</div>
+
+								
+								<div class="am-form-group">
+									<label for="user-phone" class="am-form-label">电话</label>
+									<div class="am-form-content">
+										<input id="user-phone" name="mobile" placeholder="telephonenumber" type="tel" value="{$user.mobile}">
+<small>您可以通过邮箱或者手机号登录</small>
+									</div>
+								</div>
+								<div class="am-form-group">
+									<label for="user-email" class="am-form-label">电子邮件</label>
+									<div class="am-form-content">
+										<input id="user-email" name="email" value="{$user.email}" placeholder="Email" type="email">
+		<small>您可以通过邮箱或者手机号登录</small>
+
+									</div>
+								</div>
+								
+								<div class="info-btn">
+								<input type="hidden" name="user_id" value="{$user.user_id}">
+									<input type="submit" value="保存修改">
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+				
+		{include file="common/footer"}
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,27 @@
+<block name="body">
+    <form action="" method='post'>
+        <input type="hidden" name="role_id" value="{$data.role_id}" />
+        <section>
+        <h2><strong style="color:grey;">分配用户</strong></h2>
+        <ul class="ulColumn2">
+            <li>
+                <span class="item_name" style="width:120px;">已分配用户：</span>
+                    {volist name="data.in" id="val"}
+                        <label class="single_selection"><input type="checkbox" value="{$val.admin_id}" checked name="in[]"/>{$val.login_name}</label>
+                    {/volist}
+                
+            </li>
+            <li>
+                <span class="item_name" style="width:120px;">未分配用户：</span>
+                    {volist name="data.notin" id="val"}
+                        <label class="single_selection"><input type="checkbox" value="{$val.admin_id}" name="notin[]"/>{$val.login_name}</label>
+                    {/volist}
+            </li>
+            <li>
+                <span class="item_name" style="width:120px;"></span>
+                <input type="submit" class="link_btn"/>
+            </li>
+        </ul>
+    </section>
+    </form>
+</block>

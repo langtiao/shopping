@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<form action="/shop/login/bang" method="post">
+		<center>
+		<p>请进行账号绑定：</p>
+		<img src="<?php echo $info['profile_image_url'] ?>" alt="">
+				<table border="4">
+	<tr>
+			<td><input type="text" name="name" value="<?php echo $info['name'] ?> " placeholder="您的微博昵称"> </td>
+			
+			
+			
+	</tr>
+	<tr>
+		
+		<td><input type="text" name="email" placeholder="请输入您的邮箱号"></td>
+	</tr>
+	<tr>
+		<td><input type="text" name="pwd" placeholder="请输入密码"></td>
+
+	</tr>
+	<tr>
+		<td>
+			<input type="hidden" name="user_headimg" value="<?php echo $info['avatar_hd']; ?>" /> // 头像
+			<input type="hidden" name="open_id" value="<?php echo $info['idstr']; ?>" /> // 微博用户唯一识别码
+			<input type="hidden" name="open_nickname" value="<?php echo $info['screen_name']; ?>" /> // 微博用户昵称
+		<input type="submit" value="立即绑定"></td>
+	</tr>
+					
+
+				</table>
+
+
+		</center>
+	</form>
+</body>
+</html>

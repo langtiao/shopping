@@ -1,0 +1,44 @@
+<block name="css">
+    <style type="text/css">
+        .file-input{
+            display: none;
+        }
+        .current{
+            background: white;
+            border: 1px #139667 solid;
+            color: #19a97b;
+            padding: 5px 8px;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</block>
+<block name="body">
+    <section>
+        <h2><strong style="color:grey;">角色列表</strong></h2>
+        <div class="page_title">
+            <a class="fr top_rt_btn" href=''>添加角色</a>
+        </div>
+        <table class="table">
+            <tr>
+                <th>角色ID</th>
+                <th>角色名称</th>
+                <th>操作</th>
+            <tbody id="data-box">
+            {volist name='data' id='val'}
+                <tr align='center'>
+                    <td>{$val.r_id}</td>
+                    <td>{$val.r_name}</td>
+                    <td>
+                        <a href="/shopadmin/userrole/setUser?role_id={$val.r_id}">给角色分配用户</a>
+                        <a href="/shopadmin/roleaccess/setAccess?role_id={$val.r_id}">给角色分配权限</a>
+                    </td>
+                </tr>
+            {/volist}
+            </tbody>
+        </table>
+        <aside class="paging">
+
+        </aside>
+    </section>
+</block>

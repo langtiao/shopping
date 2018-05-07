@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>结算页面</title>
+
+		<link href="/static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+
+		<link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="/static/css/cartstyle.css" rel="stylesheet" type="text/css" />
+
+		<!--<link href="/static/css/jsstyle.css" rel="stylesheet" type="text/css" />-->
+
+		<script type="text/javascript" src="/static/js/address.js"></script>
+
+	</head>
+
+	<body>
+
+		<!--顶部导航条 -->
+
+			<!--悬浮搜索框-->
+
+
+			<!--<div class="clear"></div>-->
+			<!--<div class="concent">-->
+				<!--地址 -->
+				<!--<div class="paycont">-->
+					<!--<div class="address">-->
+						<!--<h3>确认收货地址 </h3>-->
+						<!--<div class="control">-->
+							<!--<div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>-->
+						<!--</div>-->
+
+					<!--</div>-->
+
+
+					<!--订单 -->
+
+							<div class="clear"></div>
+
+
+							<!--<div class="clear"></div>-->
+							<!--</div>-->
+
+							<!--<tr id="J_BundleList_s_1911116345_1" class="item-list">-->
+
+							<!--含运费小计 -->
+
+							<!--信息 -->
+						<!--</div>-->
+
+						<!--<div class="clear"></div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<div class="footer">
+					<div class="footer-hd">
+						<p>
+							<a href="#">恒望科技</a>
+							<b>|</b>
+							<a href="#">商城首页</a>
+							<b>|</b>
+							<a href="#">支付宝</a>
+							<b>|</b>
+							<a href="#">物流</a>
+						</p>
+					</div>
+					<div class="footer-bd">
+						<p>
+							<a href="#">关于恒望</a>
+							<a href="#">合作伙伴</a>
+							<a href="#">联系我们</a>
+							<a href="#">网站地图</a>
+							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="theme-popover-mask"></div>
+			<div class="theme-popover">
+
+				<!--标题 -->
+				<div class="am-cf am-padding">
+					<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">编辑地址</strong> / <small>Add address</small></div>
+				</div>
+				<hr/>
+
+				<div class="am-u-md-12">
+					<form class="am-form am-form-horizontal" method="post" action="/shopadmin/order/address_set">
+                   <input type="hidden" name="id" value="{$data['address_id']}"/>
+						<div class="am-form-group">
+							<label for="user-name" class="am-form-label">收货人</label>
+							<div class="am-form-content">
+								<input type="text" id="user-name" value="{$data['takename']}" name="takename" placeholder="收货人">
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<label for="user-phone" class="am-form-label">手机号码</label>
+							<div class="am-form-content">
+								<input id="user-phone" value="{$data['takemobile']}" name="takemobile" placeholder="手机号必填" type="tel">
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<label for="user-phone" class="am-form-label">所在地</label>
+							<div class="am-form-content address">
+								<select data-am-selected class="selectd" name="sheng">
+									<option><?php
+										                 $a=explode('-',$data['city']);
+										                 echo array_shift($a);
+										              ?></option>
+									{volist name="region" id="vo"}
+										<option value="{$vo.region_id}">{$vo.region_name}</option>
+									{/volist}
+								</select>
+								<select data-am-selected  class="selectd" name="shi">
+									<option><?php $a=explode('-',$data['city']);
+                                                     echo $a[1]  ?></option>
+								</select>
+								<select data-am-selected  class="selectd" name="xian">
+									<option><?php
+										                 $a=explode('-',$data['city']);
+										                 echo array_pop($a);
+										              ?></option>
+								</select>
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<label for="user-intro" class="am-form-label">详细地址</label>
+							<div class="am-form-content">
+								<textarea class="" rows="3" name="address" id="user-intro" placeholder="输入详细地址" >{$data['address']}</textarea>
+								<small>100字以内写出你的详细地址...</small>
+							</div>
+						</div>
+
+						<div class="am-form-group theme-poptit">
+							<div class="am-u-sm-9 am-u-sm-push-3">
+								<div  style="display: inline"><button type="submit" class="am-btn am-btn-danger">保存</button></div>
+                                <div style="display: inline"> <button type="reset" onclick='history.go(0)' class="am-btn am-btn-danger"> 取消</button></div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+
+			<div class="clear"></div>
+	</body>
+
+</html>
+<script src="/jquery.1.12"></script>
+<script>
+	$(function () {
+	    $('.am-fl am-cf').click(function(){
+	        alert('sd')
+		})
+//		$(".am-form-group").show();
+//	alert("sdsd")
+    })
+
+	$(".selectd").on("change",function () {
+	    var pid=$(this).val();
+        var  obj=$(this);
+        $.ajax({
+            type:"get",
+            dataType:"Json",
+            url:"/shop/pay/get_city",
+            data:"pid="+pid,
+            success:function(msg){
+                var msg=JSON.parse(msg)
+				var str='<option>请选择</option>'
+                for(var i=0;i< msg.length;i++){
+                    str+="<option value="+ msg[i].region_id +">"+msg[i].region_name+"</option>"
+                }
+                obj.next().html(str)
+                obj.next().next().html('<option>请选择</option>')
+
+            }
+        })
+
+    })
+
+</script>

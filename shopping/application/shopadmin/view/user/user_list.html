@@ -1,0 +1,29 @@
+<a href="/shopadmin/user/useradd">添加用户</a>
+ <table class="table">
+            <tr>
+            	<th><input type="checkbox" name=""></th>
+                <th>用户名</th>
+                <th>用户状态</th>
+                <th>用户所拥有的权限</th>
+                <th>操作</th>
+            </tr>
+            <tbody id="data-box">
+            {volist name="data" id="val"}
+                <tr align="center">
+                	<td><input type="checkbox" value="{$val.admin_id}" ></td>
+                    <td>{$val.login_name}</td>
+                    <td>
+                        {if condition="$val.status == 1"} √
+                        {else /} ×
+                        {/if}
+                    </td>
+                    <td>{if condition="$val.access_name == ''"} 全部权限
+                        {else /} {$val.access_name}
+                        {/if}</td>
+                    <td>
+                        <a href="">删除</a>
+                    </td>
+                </tr>
+            {/volist}
+            </tbody>
+        </table>

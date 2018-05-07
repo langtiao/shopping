@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<base href="/static/shopadmin/" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<link href="styles/general.css" rel="stylesheet" type="text/css" />
+	<link href="styles/main.css" rel="stylesheet" type="text/css" />
+	<style>
+	.pagination{text-align:center;margin-left:30px;margin-top:20px;margin-bottom: 20px;}
+	.pagination li {display: inline-block;margin-right: -1px;padding: 5px;border: 1px solid #e2e2e2;min-width: 20px;text-align: center;}
+	.pagination li.active {background: #009688;color: #fff;border: 1px solid #009688;}
+	.pagination li a {display: block;text-align: center;}
+
+	</style>
+</head>
+<body>
+<h1>
+	<span class="action-span1"><a href="index.php?act=main">SHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 商品列表 </span>
+	<div style="clear:both"></div>
+</h1>
+
+
+<form method="post" action="" name="listForm" onsubmit="return confirmSubmit(this)">
+  <!-- start goods list -->
+	<div class="list-div" id="listDiv">
+		<table cellpadding="3" cellspacing="1">
+			<tbody>
+				<tr>
+					<th><input type="checkbox">编号</th>
+					<th>订单编号</th>
+					<th>商品名称</th>
+					<th>会员id</th>
+					<th>支付状态</th>
+					<th>配送状态</th>
+					<th>订单提交状态</th>
+					<th>派送时间开始</th>
+					<th>派送结束开始</th>
+					<th>订单生产时间</th>
+					<th>订单修改时间</th>
+					<th>订单总价</th>
+					<th>收货人地址</th>
+					<th>备注</th>
+					<th>操作</th>
+				</tr>
+				<tr></tr>
+		{volist name="order_list" id="val"}
+			<tr>
+				<td style="background-color: rgb(255, 255, 255);">{$val.order_id}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.order_num}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.goods_name}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.realy_name}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.paytype}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.sendstatus}</td>
+				<td style="background-color: rgb(255, 255, 255);">
+
+					{if condition="$val.status eq 0"}
+                      没提交
+					{elseif condition="$val.status eq 1"/}
+					已提交
+					{else /}
+					作废
+					{/if}
+
+
+				</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.sendstarttime}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.sendendtime}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.order_createtime}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.order_updatetime}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.goods_price}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.city}----{$val.address}</td>
+				<td style="background-color: rgb(255, 255, 255);">{$val.remark}</td>
+			</tr>
+		{/volist}
+
+	<!-- start 这段代码没有格式化，只是暂时显示数据用 开发的时候将会删除-->
+
+  <!-- end 这段代码没有格式化，只是暂时显示数据用 开发的时候将会删除-->
+  </tbody>
+ </table>
+<!-- end goods list -->
+
+	<!-- 分页 -->
+</div>
+	{$order_list->render()}
+
+
+
+</form>
+
+<div id="footer">
+	版权所有 &copy; 2006-2013 软工教育 - 高级PHP - 
+</div>
+
+</body>
+</html>

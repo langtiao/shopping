@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<base href="/static/shopadmin/" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SHOP 管理中心 - 类型管理 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="styles/general.css" rel="stylesheet" type="text/css" />
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a href="/index.php/shopadmin/goodstype/goods_typeadd">新建商品类型</a></span>
+<span class="action-span1"><a href="index.php?act=main">SHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 商品类型 </span>
+<div style="clear:both"></div>
+</h1>
+
+<form method="post" action="" name="listForm">
+<!-- start goods type list -->
+<div class="list-div" id="listDiv">
+
+	<table width="100%" cellpadding="3" cellspacing="1" id="listTable">
+		<tbody>
+			<tr>
+        <th>商品类型ID</th>
+				<th>商品类型名称</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+      {volist name="data" id="v"}
+			<tr>
+				<td class="first-cell"><span onclick="javascript:listTable.edit(this, 'edit_type_name', 1)">{$v.goods_type_id}</span></td>
+				<td align="center">{$v.goods_type_name}</td>
+        {if condition="$v.goods_type_status eq 1">}
+				  <td align="center"><img src="images/yes.gif"></td>
+        {else /}
+          <td align="center"><img src="images/no.gif"></td>
+        {/if}
+				<td align="center">
+				  <a href="{:url('attr/attrlist')}?id={$v.goods_type_id}" title="属性列表">属性列表</a> |
+				  <a href="{:url('goodstype/goods_typeup')}?id={$v.goods_type_id}" title="编辑">编辑</a> |
+				  <a href="{:url('goodstype/del')}?id={$v.goods_type_id}" title="移除">移除</a>
+				</td>
+			</tr>
+      {/volist}
+  </tbody></table>
+
+</div>
+<!-- end goods type list -->
+</form>
+
+<div id="footer">
+	版权所有 &copy; 2006-2013 软工教育 - 高级PHP - </div>
+</div>
+
+</body>
+</html>
